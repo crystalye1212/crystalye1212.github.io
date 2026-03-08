@@ -33,7 +33,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:white;
-text-align:center;
 }
 
 .hero h1{
@@ -81,21 +80,27 @@ h2{
 margin-bottom:15px;
 }
 
-/* SERVICES */
+/* FILTER BUTTONS */
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
+.filter-buttons{
 margin-top:20px;
 }
 
-.service{
-background:#eef2ff;
-padding:15px;
-border-radius:8px;
-text-align:center;
+.filter-buttons button{
+
+padding:10px 18px;
+margin:5px;
+border:none;
+background:#6366f1;
+color:white;
+border-radius:6px;
+cursor:pointer;
 font-weight:600;
+
+}
+
+.filter-buttons button:hover{
+background:#4f46e5;
 }
 
 /* PROJECTS */
@@ -111,41 +116,16 @@ margin-top:20px;
 border-radius:10px;
 overflow:hidden;
 border:1px solid #eee;
-cursor:pointer;
 }
 
 .project img{
 width:100%;
 height:220px;
 object-fit:cover;
-transition:0.3s;
-}
-
-.project img:hover{
-transform:scale(1.05);
 }
 
 .project-content{
 padding:15px;
-}
-
-/* LIGHTBOX */
-
-.lightbox{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-align-items:center;
-justify-content:center;
-}
-
-.lightbox img{
-max-width:90%;
-max-height:90%;
 }
 
 /* CONTACT */
@@ -181,7 +161,6 @@ margin-top:40px;
 <nav>
 
 <a href="#about">About</a>
-<a href="#services">Services</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 
@@ -201,30 +180,25 @@ and custom glass systems for residential and commercial spaces.
 
 </div>
 
-<div class="card" id="services">
+<div class="card" id="projects">
 
 <h2>Our Services</h2>
 
-<div class="services">
+<div class="filter-buttons">
 
-<div class="service">Shower Glass</div>
-<div class="service">Wind Protection Door</div>
-<div class="service">Closet Glass Doors</div>
-<div class="service">Mirror Installation</div>
-<div class="service">Glass Railings</div>
-<div class="service">Commercial Glass</div>
+<button onclick="filterSelection('all')">Show All</button>
+
+<button onclick="filterSelection('shower')">Shower Glass</button>
+
+<button onclick="filterSelection('door')">Wind Protection Door</button>
+
+<button onclick="filterSelection('closet')">Closet Glass Doors</button>
 
 </div>
-
-</div>
-
-<div class="card" id="projects">
-
-<h2>Our Work</h2>
 
 <div class="projects">
 
-<div class="project" onclick="openImage('shower.jpg')">
+<div class="project shower">
 
 <img src="shower.jpg">
 
@@ -234,7 +208,7 @@ and custom glass systems for residential and commercial spaces.
 
 </div>
 
-<div class="project" onclick="openImage('door.jpg')">
+<div class="project door">
 
 <img src="storm-door.jpg">
 
@@ -244,7 +218,7 @@ and custom glass systems for residential and commercial spaces.
 
 </div>
 
-<div class="project" onclick="openImage('closet1.jpg')">
+<div class="project closet">
 
 <img src="closet1.jpg">
 
@@ -254,7 +228,7 @@ and custom glass systems for residential and commercial spaces.
 
 </div>
 
-<div class="project" onclick="openImage('closet2.jpg')">
+<div class="project closet">
 
 <img src="closet2.jpg">
 
@@ -274,9 +248,9 @@ and custom glass systems for residential and commercial spaces.
 
 <p>📍 GTA Ontario</p>
 
-<p>📞 Phone: +1 647 336 4477</p>
+<p>📞 Phone: +1 xxx xxx xxxx</p>
 
-<p>✉️ Email: crystalye1212@email.com</p>
+<p>✉️ Email: your@email.com</p>
 
 <div class="contact">
 
@@ -290,30 +264,31 @@ and custom glass systems for residential and commercial spaces.
 
 </div>
 
-<div class="lightbox" id="lightbox" onclick="closeImage()">
-
-<img id="lightbox-img">
-
-</div>
-
 <footer>
 
-<p>© 2026 Crystal Glass | GTA Glass Installation</p>
+<p>© 2026 Crystal Glass</p>
 
 </footer>
 
 <script>
 
-function openImage(src){
+filterSelection("all")
 
-document.getElementById("lightbox").style.display="flex";
-document.getElementById("lightbox-img").src=src;
+function filterSelection(c){
+
+let x=document.getElementsByClassName("project");
+
+for(let i=0;i<x.length;i++){
+
+x[i].style.display="none";
+
+if(c=="all" || x[i].classList.contains(c)){
+
+x[i].style.display="block";
 
 }
 
-function closeImage(){
-
-document.getElementById("lightbox").style.display="none";
+}
 
 }
 
