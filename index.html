@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -12,7 +13,7 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f5f5f5;
+background:#f4f4f4;
 }
 
 header{
@@ -44,8 +45,9 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:white;
-font-size:40px;
+font-size:38px;
 font-weight:bold;
+text-shadow:0 2px 5px black;
 }
 
 section{
@@ -74,7 +76,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.1);
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
 max-width:1200px;
 margin:auto;
@@ -83,7 +85,30 @@ margin:auto;
 .gallery img{
 width:100%;
 border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
+cursor:pointer;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+.lightbox{
+display:none;
+position:fixed;
+z-index:999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
 }
 
 footer{
@@ -92,6 +117,11 @@ color:white;
 text-align:center;
 padding:30px;
 margin-top:40px;
+}
+
+.contact-box{
+font-size:18px;
+line-height:1.8;
 }
 
 </style>
@@ -117,7 +147,7 @@ margin-top:40px;
 </nav>
 
 <div class="hero">
-Luxury Custom Glass Installation
+Luxury Custom Glass & Railing Installation
 </div>
 
 <section id="about">
@@ -125,12 +155,12 @@ Luxury Custom Glass Installation
 <h2>About Us</h2>
 
 <p>
-We are a professional custom glass installation company serving the Greater Toronto Area.
+Crystal Glass Design specializes in custom glass installation across the Greater Toronto Area.
 </p>
 
 <p>
-Our services include shower glass, glass railings, closet doors,
-storm protection doors, mirrors, and commercial glass projects.
+We provide professional installation for shower glass, glass railings,
+closet doors, mirrors, storm protection doors, and commercial glass systems.
 </p>
 
 </section>
@@ -143,32 +173,32 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <div class="service-box">
 <h3>Shower Glass</h3>
-<p>Custom frameless shower glass installation.</p>
+<p>Custom frameless shower enclosures.</p>
 </div>
 
 <div class="service-box">
 <h3>Glass Railings</h3>
-<p>Modern stair and balcony glass railings.</p>
+<p>Modern stair and balcony railings.</p>
 </div>
 
 <div class="service-box">
-<h3>Storm Protection Doors</h3>
-<p>Outdoor glass wind protection doors.</p>
+<h3>Storm Doors</h3>
+<p>Exterior glass wind protection doors.</p>
 </div>
 
 <div class="service-box">
 <h3>Closet Glass Doors</h3>
-<p>Sliding glass closet door systems.</p>
+<p>Sliding glass closet systems.</p>
 </div>
 
 <div class="service-box">
 <h3>Mirror Installation</h3>
-<p>Large wall mirrors for gyms and homes.</p>
+<p>Large wall mirrors for homes and gyms.</p>
 </div>
 
 <div class="service-box">
 <h3>Commercial Glass</h3>
-<p>Storefront glass and office partitions.</p>
+<p>Storefront and office glass installation.</p>
 </div>
 
 </div>
@@ -183,13 +213,13 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <div class="gallery">
 
-<img src="shower1.jpg">
-<img src="shower2.jpg">
-<img src="shower3.jpg">
-<img src="shower4.jpg">
-<img src="shower5.jpg">
-<img src="shower6.jpg">
-<img src="shower7.jpg">
+<img src="shower1.jpg" onclick="openImg(this)">
+<img src="shower2.jpg" onclick="openImg(this)">
+<img src="shower3.jpg" onclick="openImg(this)">
+<img src="shower4.jpg" onclick="openImg(this)">
+<img src="shower5.jpg" onclick="openImg(this)">
+<img src="shower6.jpg" onclick="openImg(this)">
+<img src="shower7.jpg" onclick="openImg(this)">
 
 </div>
 
@@ -199,7 +229,7 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <div class="gallery">
 
-<img src="storm-door.jpg">
+<img src="storm-door.jpg" onclick="openImg(this)">
 
 </div>
 
@@ -209,8 +239,8 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <div class="gallery">
 
-<img src="closet1.jpg">
-<img src="closet2.jpg">
+<img src="closet1.jpg" onclick="openImg(this)">
+<img src="closet2.jpg" onclick="openImg(this)">
 
 </div>
 
@@ -220,9 +250,9 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <div class="gallery">
 
-<img src="railing1.jpg">
-<img src="railing2.jpg">
-<img src="railing3.jpg">
+<img src="railing1.jpg" onclick="openImg(this)">
+<img src="railing2.jpg" onclick="openImg(this)">
+<img src="railing3.jpg" onclick="openImg(this)">
 
 </div>
 
@@ -232,7 +262,7 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <div class="gallery">
 
-<img src="mirror1.jpg">
+<img src="mirror1.jpg" onclick="openImg(this)">
 
 </div>
 
@@ -242,11 +272,15 @@ storm protection doors, mirrors, and commercial glass projects.
 
 <h2>Contact Us</h2>
 
+<div class="contact-box">
+
 <p>Serving the Greater Toronto Area</p>
 
-<p>Email: crystalye1212@gmail.com</p>
+<p>📞 Phone: 647-336-4477</p>
 
-<p>Phone: 647-336-4477</p>
+<p>✉ Email: crystalye1212@gmail.com</p>
+
+</div>
 
 </section>
 
@@ -255,6 +289,23 @@ storm protection doors, mirrors, and commercial glass projects.
 <p>© 2026 Crystal Glass Design</p>
 
 </footer>
+
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+<img id="lightbox-img">
+</div>
+
+<script>
+
+function openImg(img){
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightbox-img").src=img.src
+}
+
+function closeImg(){
+document.getElementById("lightbox").style.display="none"
+}
+
+</script>
 
 </body>
 </html>
