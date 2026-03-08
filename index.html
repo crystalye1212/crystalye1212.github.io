@@ -13,33 +13,37 @@
 <style>
 
 *{
-box-sizing:border-box;
 margin:0;
-padding:0
+padding:0;
+box-sizing:border-box;
 }
 
 body{
 font-family:'Inter',sans-serif;
 background:#f4f6f8;
-color:#333
+color:#333;
 }
 
-header{
-background:linear-gradient(135deg,#1f2937,#111827);
+/* HERO */
+
+.hero{
+height:420px;
+background:url("shower.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
 color:white;
-padding:80px 20px;
-text-align:center
+text-align:center;
 }
 
-header h1{
-font-size:42px;
-margin-bottom:10px
+.hero h1{
+font-size:48px;
+background:rgba(0,0,0,0.4);
+padding:20px 40px;
+border-radius:10px;
 }
 
-header p{
-opacity:0.9;
-font-size:18px
-}
+/* NAV */
 
 nav{
 background:white;
@@ -47,20 +51,22 @@ padding:15px;
 text-align:center;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 position:sticky;
-top:0
+top:0;
 }
 
 nav a{
 margin:0 15px;
 text-decoration:none;
 color:#333;
-font-weight:600
+font-weight:600;
 }
+
+/* CONTAINER */
 
 .container{
 max-width:1100px;
 margin:auto;
-padding:40px 20px
+padding:40px 20px;
 }
 
 .card{
@@ -68,18 +74,20 @@ background:white;
 padding:30px;
 border-radius:12px;
 margin-bottom:30px;
-box-shadow:0 8px 25px rgba(0,0,0,0.06)
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
 }
 
 h2{
-margin-bottom:15px
+margin-bottom:15px;
 }
+
+/* SERVICES */
 
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:15px;
-margin-top:20px
+margin-top:20px;
 }
 
 .service{
@@ -87,47 +95,77 @@ background:#eef2ff;
 padding:15px;
 border-radius:8px;
 text-align:center;
-font-weight:600
+font-weight:600;
 }
+
+/* PROJECTS */
 
 .projects{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
-margin-top:20px
+margin-top:20px;
 }
 
 .project{
-background:#fafafa;
 border-radius:10px;
 overflow:hidden;
-border:1px solid #eee
+border:1px solid #eee;
+cursor:pointer;
 }
 
 .project img{
 width:100%;
 height:220px;
-object-fit:cover
+object-fit:cover;
+transition:0.3s;
+}
+
+.project img:hover{
+transform:scale(1.05);
 }
 
 .project-content{
-padding:18px
+padding:15px;
 }
 
-footer{
-background:#111827;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px
+/* LIGHTBOX */
+
+.lightbox{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+align-items:center;
+justify-content:center;
 }
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+}
+
+/* CONTACT */
 
 .contact a{
 display:inline-block;
 margin:10px;
 text-decoration:none;
 color:#6366f1;
-font-weight:600
+font-weight:600;
+}
+
+/* FOOTER */
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
 }
 
 </style>
@@ -136,14 +174,9 @@ font-weight:600
 
 <body>
 
-<header>
-
+<div class="hero">
 <h1>Crystal Glass</h1>
-
-<p>Professional Glass Installation in GTA</p>
-
-</header>
-
+</div>
 
 <nav>
 
@@ -154,24 +187,19 @@ font-weight:600
 
 </nav>
 
-
 <div class="container">
-
 
 <div class="card" id="about">
 
 <h2>About Our Company</h2>
 
 <p>
-We are a professional glass installation company serving the Greater Toronto Area.
-We specialize in custom glass installation for residential and commercial spaces,
-including shower glass, mirror walls, closet doors, wind protection systems,
-and commercial glass projects.
+Professional glass installation company serving the Greater Toronto Area.
+We specialize in shower glass, wind protection doors, closet glass doors
+and custom glass systems for residential and commercial spaces.
 </p>
 
 </div>
-
-
 
 <div class="card" id="services">
 
@@ -179,23 +207,16 @@ and commercial glass projects.
 
 <div class="services">
 
-<div class="service">Shower Glass Installation</div>
-
-<div class="service">Custom Mirror Installation</div>
-
-<div class="service">Glass Closet Doors</div>
-
-<div class="service">Glass Stair Railings</div>
-
-<div class="service">Wind Protection Doors</div>
-
-<div class="service">Commercial Glass Installation</div>
+<div class="service">Shower Glass</div>
+<div class="service">Wind Protection Door</div>
+<div class="service">Closet Glass Doors</div>
+<div class="service">Mirror Installation</div>
+<div class="service">Glass Railings</div>
+<div class="service">Commercial Glass</div>
 
 </div>
 
 </div>
-
-
 
 <div class="card" id="projects">
 
@@ -203,104 +224,100 @@ and commercial glass projects.
 
 <div class="projects">
 
-
-<div class="project">
+<div class="project" onclick="openImage('shower.jpg')">
 
 <img src="shower.jpg">
 
 <div class="project-content">
-
-<h3>Frameless Shower Glass</h3>
-
-<p>Custom frameless shower glass installation for modern bathrooms.</p>
-
+<h3>Shower Glass</h3>
 </div>
 
 </div>
 
+<div class="project" onclick="openImage('door.jpg')">
 
-
-<div class="project">
-
-<img src="storm-door.jpg">
+<img src="door.jpg">
 
 <div class="project-content">
-
-<h3>Glass Wind Protection Door</h3>
-
-<p>Glass wind protection system for entrances and outdoor areas.</p>
-
+<h3>Wind Protection Door</h3>
 </div>
 
 </div>
 
-
-
-<div class="project">
+<div class="project" onclick="openImage('closet1.jpg')">
 
 <img src="closet1.jpg">
 
 <div class="project-content">
-
-<h3>Glass Closet Doors</h3>
-
-<p>Modern sliding glass closet doors with aluminum frame.</p>
-
+<h3>Closet Glass Door</h3>
 </div>
 
 </div>
 
-
-
-<div class="project">
+<div class="project" onclick="openImage('closet2.jpg')">
 
 <img src="closet2.jpg">
 
 <div class="project-content">
-
-<h3>Custom Closet Glass System</h3>
-
-<p>Elegant glass wardrobe and interior glass partition system.</p>
-
+<h3>Wardrobe Glass</h3>
 </div>
-
-</div>
-
 
 </div>
 
 </div>
 
-
+</div>
 
 <div class="card" id="contact">
 
 <h2>Contact</h2>
 
-<p>Email: your@email.com</p>
+<p>📍 GTA Ontario</p>
 
-<p>Location: GTA, Ontario</p>
+<p>📞 Phone: +1 xxx xxx xxxx</p>
+
+<p>✉️ Email: your@email.com</p>
 
 <div class="contact">
 
 <a href="#">Instagram</a>
 
-<a href="#">Request Quote</a>
+<a href="#">Free Quote</a>
 
 </div>
 
 </div>
 
-
 </div>
 
+<div class="lightbox" id="lightbox" onclick="closeImage()">
+
+<img id="lightbox-img">
+
+</div>
 
 <footer>
 
-<p>© 2026 Crystal Glass • GTA Glass Installation</p>
+<p>© 2026 Crystal Glass | GTA Glass Installation</p>
 
 </footer>
 
+<script>
+
+function openImage(src){
+
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=src;
+
+}
+
+function closeImage(){
+
+document.getElementById("lightbox").style.display="none";
+
+}
+
+</script>
 
 </body>
 
