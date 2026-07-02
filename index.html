@@ -1,77 +1,126 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crystal Glass Design | GTA Commercial Glass</title>
-  <meta name="description" content="Crystal Glass Design provides commercial and custom glass installation across the GTA, including shower glass, railings, mirrors, closet doors, storm doors, partitions, and commercial glass." />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crystal Glass Design | GTA Commercial Glass</title>
+<meta name="description" content="Commercial and custom glass installation in Toronto and GTA. Shower glass, railings, mirrors, closet doors, storm doors, partitions, and commercial glass.">
+<link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
 </head>
 <body>
 
 <header class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">Toronto & GTA</p>
-    <h1>Commercial & Custom Glass Solutions</h1>
-    <p class="subtitle">Professional glass installation for residential, commercial, and custom projects.</p>
-    <div class="hero-buttons">
-      <a href="tel:6473364477" class="btn primary">Call 647-336-4477</a>
-      <a href="mailto:crystalye1212@gmail.com" class="btn outline">Request a Free Quote</a>
-    </div>
-  </div>
+<div class="hero-content">
+<p class="eyebrow">Toronto & GTA</p>
+<h1>Commercial & Custom Glass Solutions</h1>
+<p class="subtitle">Professional glass installation for residential, commercial, and custom projects.</p>
+<div class="hero-buttons">
+<a href="tel:6473364477" class="btn primary">Call 647-336-4477</a>
+<a href="mailto:crystalye1212@gmail.com" class="btn outline">Request a Free Quote</a>
+</div>
+</div>
 </header>
 
 <nav class="nav">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <main>
-  <section id="about" class="section">
-    <div class="card">
-      <h2>About Crystal Glass Design</h2>
-      <p>
-        Crystal Glass Design is a professional custom glass installation company serving the Greater Toronto Area.
-        We provide clean, modern, and reliable glass solutions for residential and commercial projects.
-      </p>
-      <p>
-        Our work includes shower glass, glass railings, closet glass doors, mirror installation,
-        storm and wind protection doors, partitions, and commercial glass systems.
-      </p>
-    </div>
-  </section>
+<section id="about" class="section">
+<div class="card">
+<h2>About Crystal Glass Design</h2>
+<p>Crystal Glass Design is a professional custom glass installation company serving Toronto and the Greater Toronto Area.</p>
+<p>We provide shower glass, glass railings, closet glass doors, mirrors, storm and wind protection doors, partitions, and commercial glass systems.</p>
+</div>
+</section>
 
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="services" id="serviceLinks"></div>
-  </section>
+<section id="services" class="section">
+<h2>Our Services</h2>
+<div class="services">
+<a class="service-card" href="#commercial"><h3>Commercial Glass</h3><p>Storefront, office, and commercial glass installation.</p></a>
+<a class="service-card" href="#railing"><h3>Glass Railings</h3><p>Glass railings for stairs, balconies, and exterior areas.</p></a>
+<a class="service-card" href="#shower"><h3>Shower Glass</h3><p>Frameless and sliding shower glass installation.</p></a>
+<a class="service-card" href="#storm-door"><h3>Storm / Wind Protection Doors</h3><p>Outdoor wind protection and entrance glass systems.</p></a>
+<a class="service-card" href="#closet"><h3>Closet Glass Doors</h3><p>Modern sliding glass closet door systems.</p></a>
+<a class="service-card" href="#mirror"><h3>Mirror Installation</h3><p>Wall mirrors, gym mirrors, and custom mirror projects.</p></a>
+<a class="service-card" href="#partition"><h3>Glass Partitions</h3><p>Interior glass walls and office partition systems.</p></a>
+</div>
+</section>
 
-  <section id="projects" class="section">
-    <h2>Projects Gallery</h2>
-    <p class="note">Photos are organized by project type.</p>
-    <div id="galleryRoot"></div>
-  </section>
+<section id="projects" class="section">
+<h2>Projects Gallery</h2>
+<p class="note">以后新增图片，只要放进对应 images 文件夹，然后 Commit + Push，网站会自动显示。</p>
 
-  <section id="contact" class="section contact">
-    <h2>Contact Us</h2>
-    <p>Serving Toronto and the Greater Toronto Area</p>
-    <p><strong>Phone:</strong> <a href="tel:6473364477">647-336-4477</a></p>
-    <p><strong>Email:</strong> <a href="mailto:crystalye1212@gmail.com">crystalye1212@gmail.com</a></p>
-    <a href="mailto:crystalye1212@gmail.com" class="btn dark">Request a Free Quote</a>
-  </section>
+{% assign commercial_images = site.static_files | where_exp: "file", "file.path contains '/images/commercial/'" %}
+{% if commercial_images.size > 0 %}
+<div id="commercial" class="gallery-section"><h3>Commercial Glass</h3><div class="gallery">
+{% for file in commercial_images %}<img src="{{ file.path | relative_url }}" alt="Commercial glass project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+
+{% assign railing_images = site.static_files | where_exp: "file", "file.path contains '/images/railing/'" %}
+{% if railing_images.size > 0 %}
+<div id="railing" class="gallery-section"><h3>Glass Railings</h3><div class="gallery">
+{% for file in railing_images %}<img src="{{ file.path | relative_url }}" alt="Glass railing project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+
+{% assign shower_images = site.static_files | where_exp: "file", "file.path contains '/images/shower/'" %}
+{% if shower_images.size > 0 %}
+<div id="shower" class="gallery-section"><h3>Shower Glass</h3><div class="gallery">
+{% for file in shower_images %}<img src="{{ file.path | relative_url }}" alt="Shower glass project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+
+{% assign storm_images = site.static_files | where_exp: "file", "file.path contains '/images/storm-door/'" %}
+{% if storm_images.size > 0 %}
+<div id="storm-door" class="gallery-section"><h3>Storm / Wind Protection Doors</h3><div class="gallery">
+{% for file in storm_images %}<img src="{{ file.path | relative_url }}" alt="Storm door project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+
+{% assign closet_images = site.static_files | where_exp: "file", "file.path contains '/images/closet/'" %}
+{% if closet_images.size > 0 %}
+<div id="closet" class="gallery-section"><h3>Closet Glass Doors</h3><div class="gallery">
+{% for file in closet_images %}<img src="{{ file.path | relative_url }}" alt="Closet glass door project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+
+{% assign mirror_images = site.static_files | where_exp: "file", "file.path contains '/images/mirror/'" %}
+{% if mirror_images.size > 0 %}
+<div id="mirror" class="gallery-section"><h3>Mirror Installation</h3><div class="gallery">
+{% for file in mirror_images %}<img src="{{ file.path | relative_url }}" alt="Mirror installation project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+
+{% assign partition_images = site.static_files | where_exp: "file", "file.path contains '/images/partition/'" %}
+{% if partition_images.size > 0 %}
+<div id="partition" class="gallery-section"><h3>Glass Partitions</h3><div class="gallery">
+{% for file in partition_images %}<img src="{{ file.path | relative_url }}" alt="Glass partition project" onclick="openLightbox(this.src)">{% endfor %}
+</div></div>
+{% endif %}
+</section>
+
+<section id="contact" class="section contact">
+<h2>Contact Us</h2>
+<p>Serving Toronto and the Greater Toronto Area</p>
+<p><strong>Phone:</strong> <a href="tel:6473364477">647-336-4477</a></p>
+<p><strong>Email:</strong> <a href="mailto:crystalye1212@gmail.com">crystalye1212@gmail.com</a></p>
+<a href="mailto:crystalye1212@gmail.com" class="btn dark">Request a Free Quote</a>
+</section>
 </main>
 
-<footer>
-  <p>© 2026 Crystal Glass Design. All rights reserved.</p>
-</footer>
-
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightboxImage" alt="Project preview" />
-</div>
-
-<script src="js/gallery-data.js"></script>
-<script src="js/script.js"></script>
+<footer><p>© 2026 Crystal Glass Design. All rights reserved.</p></footer>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightboxImage" alt="Project preview"></div>
+<script>
+function openLightbox(src){document.getElementById("lightboxImage").src=src;document.getElementById("lightbox").style.display="flex"}
+function closeLightbox(){document.getElementById("lightbox").style.display="none"}
+</script>
 </body>
 </html>
