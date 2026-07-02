@@ -1,1 +1,1 @@
-Final auto-photo version. Add photos into images folders, then Commit + Push.
+Company website. Add new photos into the correct images folder, then Commit + Push.
